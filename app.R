@@ -7,6 +7,7 @@
 library("shiny")
 library("shinydashboard")
 library("DT")
+library("stringr")
 
 # lexique <- readRDS("lexique.RDS")
 
