@@ -21,7 +21,11 @@ ui <- dashboardPage(
       tabItem(tabName = "parametres",
               h1("Constitution d'un dictionnaire restreint pour beaux-présents - Vincent Looten"),
               textInput("motgen", "Mot générateur (accent non pris en compte et non sensible à la case", ""),
-              radioButtons("optionbxp","Mode :",choices = c("Beau présent","Belle absente"), selected = "Beau présent"),
+              radioButtons("optionbxp","Mode :",choices = c("Beau présent","Belle absente","N-vocalisme"), selected = "Beau présent"),
+              conditionalPanel(
+                condition = "input.optionbxp == 'N-vocalisme'",
+                checkboxGroupInput("voyelles_good","Voyelles autorisés :", choices=c("a","e","i","o","u","y"), selected = "a")
+              ),
               actionButton("btn", "Générer le dictionnaire")
               
       ),

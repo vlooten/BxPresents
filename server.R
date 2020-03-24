@@ -25,7 +25,10 @@ server <- function(input, output){
       letters_bad <- unique(str_extract_all(mot, "[a-z]")[[1]])
       letters_good <- setdiff(letters,letters_bad)
     }
-    
+    if(input$optionbxp=="N-vocalisme"){
+      letters_bad <- setdiff(c("a","e","i","o","u","y"),input$voyelles_good)
+      letters_good <- setdiff(letters,letters_bad)
+    }
     lexique0 <- lexique
     for(k in 1:length(letters_bad)){
       lexique0 <- lexique0[-grep(letters_bad[k],lexique0$pur,perl = F,fixed = T),]
